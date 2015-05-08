@@ -236,3 +236,7 @@ ul.issues .issue .type-pr span {
 .detailoverlay.visible {
   opacity: 1;
 }
+
+.credits {
+  text-align: center;
+}
