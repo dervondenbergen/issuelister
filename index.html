@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Issue Lister</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Open Issues and Pullrequests</h1>
+    <ul class="issues"></ul>
+    
+    <div class="detailoverlay"></div>
+    <div class="detail"></div>
+    
+    <script id="list-template" type="text/x-handlebars-template">
+      <li>
+        <a href="#/id/{{id}}">
+          <div class="issue">
+            <div class="repo">{{repo}}</div>
+            <div class="title">{{title}}</div>
+            <div class="author">@{{author}}</div>
+            <div class="time">{{time}}</div>
+            <div class="type type-{{type}}"><span>{{type}}</span></div>
+          </div>
+        </a>
+      </li>
+    </script>
+
+    <script id="detail-template" type="text/x-handlebars-template">
+      <div class="header type-{{type}}">
+        <div class="info">
+          <div class="typename">{{writtentype}}</div>
+          <div class="repo"><a href="{{repourl}}">{{repo}}</a></div>
+          <div class="issuenumber">#{{issuenumber}}</div>
+        </div>
+        <div class="title"><a target="_blank" href="{{url}}">{{title}}</a></div>
+      </div>
+      <div class="meta">
+        <span class="author"><a href="{{authorlink}}">@{{author}}</a></span>
+        <span class="time">at {{time}}</span>
+      </div>
+      {{#if labels}}
+      <div class="labels">
+        {{#each labels}}
+        <a href="{{url}}">
+          <div style="background: #{{color}}">
+          {{name}}
+          </div>
+        </a>
+        {{/each}}
+      </div>
+      {{/if}}
+      <div class="description">{{{description}}}</div>
+    </script>
+  </body>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+  <script src="script.js"></script>
+  <script src="config.js"></script>
+</html>

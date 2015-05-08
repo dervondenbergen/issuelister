@@ -1,0 +1,260 @@
+* {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body.blocked {
+  overflow: hidden;
+  
+  h1, ul {
+    user-select: none;
+  }
+  
+}
+
+h1 {
+  padding: 0 1em;
+}
+
+ul.issues {
+  margin: 0;
+  padding: 0 2em;
+  
+  li {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: initial;
+    
+    &:hover .issue,
+    &:focus .issue {
+      background: cornsilk;
+    }
+    
+  }
+  
+  .issue {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .6em 1em;
+    margin-bottom: .3em;
+    border-radius: .4em;
+    cursor: pointer;
+    
+    .repo {
+      font-size: .9em;
+      color: #333;
+      font-weight: 300;
+      flex-basis: 12em
+    }
+    
+    .title {
+      font-weight: 600;
+      flex-basis: 30em;
+    }
+    
+    .author {
+      font-size: .8em;
+      flex-basis: 10em;
+      font-weight: 300;
+      color: #333;      
+    }
+    
+    .time {
+      flex-basis: 8em;
+      font-size: .9em;
+      font-weight: 300;
+      color: #333;
+    }
+    
+    .type {
+      flex-basis: 1em;
+      height: 1em;
+      width: 1em;
+      font-size: .8em;
+      text-align: center;
+      padding: .8em;
+      border-radius: 50%;
+      text-transform: uppercase;
+      font-weight: 600;
+      
+      &-i {
+        background: coral;
+      }
+      
+      &-pr {
+        background: cornflowerblue;
+        span {
+          margin-left: -.2em;
+        }
+      }
+      
+    }
+    
+  }
+  
+  @media all and (max-width: 60em) {
+    
+    .issue {
+      flex-direction: column;
+      
+      .repo, .title, .author, .time {
+        flex-basis: initial;
+      }
+      
+    }
+    
+  }
+  
+}
+
+.detail {
+  
+  display: none;
+  width: 100%;
+  max-width: 40em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: white;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: scroll;
+  
+  &.visible {
+    display: block;
+  }
+  
+  .header {
+    padding: 1em 2em;
+    background-color: #333;
+    
+    &.type-i {
+      background-color: coral;
+    }
+    
+    &.type-pr {
+      background: cornflowerblue;
+    }
+    
+  }
+  
+  .info {
+    display: flex;
+    margin-bottom: .3em;
+    justify-content: space-between;
+  }
+  
+  .typename {
+    font-size: .9em;
+    color: whitesmoke;
+    font-style: italic;
+    font-weight: 300;
+  }
+  
+  .repo {
+    
+    text-decoration: none;
+    font-weight: 300;
+    
+    a {
+      color: whitesmoke;
+    }
+    
+  }
+  
+  .issuenumber {
+    color: whitesmoke;
+    font-size: .9em;
+    font-weight: 600;
+  }
+  
+  .title { 
+    
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: .3em;
+    
+    &::before {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    
+    a {
+      color: white;
+    }
+  }
+  
+  .meta {
+    padding: 1em 2em;
+    
+    .author {
+      
+      a {
+        color: initial;
+      }
+      
+    }
+    
+  }
+  
+  .labels {
+    display: flex;
+    padding: .5em 2em;
+    
+    a {
+      color: #332829;
+      margin-right: .5em;
+    }
+    
+    div {
+      font-size: .8em;
+      padding: .5em;
+      border-radius: .3em;
+      font-weight: 600;
+    }
+    
+  }
+  
+  .description {
+    
+    padding: 0 2em;
+    width: 100%;
+    box-sizing: border-box;
+    
+    img {
+      width: auto;
+      max-width: 100%;
+    }
+    
+    p, ul, li, div {
+      word-wrap: break-word;
+    }
+    
+  }
+  
+}
+
+.detailoverlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: none;
+  background: rgba(0, 0, 0, .3);
+  transition: opacity .5s;
+  
+  &.unhidden {
+    display: block;
+  }
+  &.visible {
+    opacity: 1;
+  }
+  
+}
