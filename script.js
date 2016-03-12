@@ -27,7 +27,7 @@ function issuelister (config) {
   var detail = document.querySelector('.detail');
   var detailoverlay = document.querySelector('.detailoverlay');
   
-  var repos = 'https://api.github.com/orgs/bullgit/repos?per_page=100';
+  var repos = 'https://api.github.com/' + config.type + '/' + config.name + '/repos?per_page=100';
 
   
   var allissues = {};
